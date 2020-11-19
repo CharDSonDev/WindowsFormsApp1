@@ -166,6 +166,7 @@ namespace WindowsFormsApp1
             this.buttonRegistrarse.TabIndex = 14;
             this.buttonRegistrarse.Text = "Resgistrar";
             this.buttonRegistrarse.UseVisualStyleBackColor = true;
+            this.buttonRegistrarse.Click += new System.EventHandler(this.buttonRegistrarse_Click);
             // 
             // Registrarse
             // 
