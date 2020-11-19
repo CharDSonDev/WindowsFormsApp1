@@ -34,7 +34,7 @@ namespace WindowsFormsApp1
                     MessageBox.Show("Datos erroneos");
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 MessageBox.Show("Que");
             }

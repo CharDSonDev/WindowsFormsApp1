@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
@@ -52,7 +46,7 @@ namespace WindowsFormsApp1
         {
             try
             {
-                string query = "SELECT * FROM Clientes WHERE Nombre like '" + textNombre.Text + "'or Cedula like '" + textCedula.Text +"'";
+                string query = "SELECT * FROM Clientes WHERE Nombre like '" + textNombre.Text + "'or Cedula like '" + textCedula.Text + "'";
                 SqlCommand comando = new SqlCommand(query, conexion);
                 SqlDataAdapter adaptador = new SqlDataAdapter();
                 adaptador.SelectCommand = comando;
@@ -68,27 +62,13 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string query = "UPDATE Clientes SET Nombre = @nombre, Apellido = @apellido, Correo = @correo, Direccion = @direccion, Telefono = @telefono, contrasena = @contrasena WHRE Cedula = @cedula";
-                conexion.Open();
-                SqlCommand comando = new SqlCommand(query, conexion);
-                comando.Parameters.AddWithValue("@cedula", textCedula.Text);
-                comando.Parameters.AddWithValue("@nombre", textNombre.Text);
-                comando.Parameters.AddWithValue("@apellido", textApellido.Text);
-                comando.Parameters.AddWithValue("@correo", textCorreo.Text);
-                comando.Parameters.AddWithValue("@direccion", textDireccion.Text);
-                comando.Parameters.AddWithValue("@telefono", textTelefono.Text);
-                comando.Parameters.AddWithValue("@contrasena", textContrasena.Text);
-                comando.ExecuteNonQuery();
-                conexion.Close();
-                Mostrar();
-                MessageBox.Show("Datos actualizados.");
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Esta dejando campos vacios o datos erroneos");
-            }
+            Actualizar actualizar = new Actualizar();
+            actualizar.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
